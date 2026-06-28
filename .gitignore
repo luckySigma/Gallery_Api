@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.Environment
+
+# Logs
+*.Logs
+npm-debug.Logs
+
+# macOs
+.DS_Store
+
+# VS Code
+.vscode/
