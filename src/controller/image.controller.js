@@ -8,11 +8,7 @@ async function fetchImages(req, res, next) {
     const data = await getImages(page, perPage);
     console.log(data);
 
-    res.status(200).json({
-      success: true,
-      page: Number(page),
-      results: data,
-    });
+    res.status(200).json(data);
   } catch (error) {
     next(error);
   }
