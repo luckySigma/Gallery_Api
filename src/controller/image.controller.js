@@ -1,4 +1,4 @@
-const { getImages } = require("../services/unsplash.service");
+const { getImages, getImagesByQuery } = require("../services/unsplash.service");
 
 async function fetchImages(req, res, next) {
   try {
@@ -14,6 +14,20 @@ async function fetchImages(req, res, next) {
   }
 }
 
+async function fetchByQuery(req, res, next) {
+  try {
+    const page = req.query.page;
+    const query = req.query.query;
+
+    const data = await getImagesByQuery(page, query);
+    console.log(data);
+    res.status(200).json(data);
+  } catch (error) {
+    next(error);
+  }
+}
+
 module.exports = {
   fetchImages,
+  fetchByQuery,
 };

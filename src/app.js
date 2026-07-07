@@ -10,11 +10,10 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://image-gallery-alpha-pied.vercel.app",
+    origin: ["https://image-gallery-alpha-pied.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
   }),
 );
 
-app.use("/api/images", imageRoutes);
-
+app.use("/api", imageRoutes);
 module.exports = app;
