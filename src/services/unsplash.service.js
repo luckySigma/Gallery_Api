@@ -1,20 +1,28 @@
 const axios = require("axios");
+const unsplashClient = require("./unsplashClient");
 
-const UNSPLASH_BASE_URL = "https://api.unsplash.com";
 
 async function getImages(page = 1, perPage = 12) {
-  const response = await axios.get(`${UNSPLASH_BASE_URL}/photos`, {
+  const response = await unsplashClient.get("/photos", {
     params: {
       page,
       per_page: perPage,
       order_by: "popular",
-    },
-    headers: {
-      Authorization: `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}`,
     },
   });
 
   return response.data;
 }
 
-module.exports = { getImages };
+async function getImagesByQuery(page = 1, inputQuery = "") {
+  const response = await unsplashClient.get("/search/photos", {
+    params: {
+      page,
+      query: inputQuery,
+    },
+  });
+
+  return response.data;
+}
+
+module.exports = { getImages, getImagesByQuery };
