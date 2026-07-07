@@ -1,8 +1,10 @@
 const express = require("express");
-const { fetchImages } = require("../controller/image.controller");
+const { fetchImages, fetchByQuery } = require("../controller/image.controller");
 
 const router = express.Router();
 
-router.get("/",fetchImages);
+router.get("/images",fetchImages);
+
+router.get("/search",fetchByQuery);
 
 module.exports = router;
