@@ -2,7 +2,7 @@ const axios = require("axios");
 const unsplashClient = require("./unsplashClient");
 
 
-async function getImages(page = 1, perPage = 12) {
+async function getImages(page = 1, perPage) {
   const response = await unsplashClient.get("/photos", {
     params: {
       page,
